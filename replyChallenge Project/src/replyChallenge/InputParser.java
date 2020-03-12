@@ -3,6 +3,7 @@ package replyChallenge;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class InputParser 
 {
@@ -10,7 +11,7 @@ public class InputParser
 
 	public static void main(String[] args) throws IOException
 	{
-		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\f_glitch.txt");
+		FileHandler file=new FileHandler("C:\\Users\\semmo\\Desktop\\f_glitch.txt");
 		String row_col=file.getLine();
 		int rowSize = Integer.parseInt(row_col.split(" ")[0]);
 		int colSize = Integer.parseInt(row_col.split(" ")[1]);
@@ -26,6 +27,7 @@ public class InputParser
 		}
 		int devCount=Integer.parseInt(file.getLine());
 		ArrayList<Developer> developers = new ArrayList<Developer>();
+		ArrayList<Developer> developers1 = new ArrayList<Developer>();
 		for(int i=0; i<devCount;++i)
 		{
 			String temp=file.getLine();
@@ -38,10 +40,14 @@ public class InputParser
 			{
 				skills.add(values[3+j]);
 			}
-			developers.add(new Developer(company,bonus,nsk,skills,"X"));
+			Developer d=new Developer(company,bonus,nsk,skills,"X");
+			developers.add(d);
+			developers1.add(d);	
+			
 		}
 		int pManagerCount=Integer.parseInt(file.getLine());
 		ArrayList<ProjectManager> pManagers= new ArrayList<ProjectManager>();
+		ArrayList<ProjectManager> pManagers1= new ArrayList<ProjectManager>();
 		for(int i=0;i<pManagerCount;++i)
 		{
 			String temp=file.getLine();
@@ -50,8 +56,11 @@ public class InputParser
 			int bonus= Integer.parseInt(values[1]);
 			ProjectManager pm=new ProjectManager(company,bonus,"X");
 			pManagers.add(pm);
+			pManagers1.add(pm);
 		}
 		System.out.println("end");
+		Collections.shuffle(pManagers1);
+		Collections.shuffle(developers1);
 		int indxD=developers.size()-1;
 		int indxM=pManagers.size()-1;
 		for(int i=0;i<colSize;i++) {
@@ -60,16 +69,16 @@ public class InputParser
 					continue;
 				if (room[i][j]=='_') {
 					if(indxD>0) {
-						roomW[i][j]=developers.get(indxD);
-						developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+						roomW[i][j]=developers1.get(indxD);
+						developers1.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
 						indxD--;
 					}
 				}
 				else if (room[i][j]=='M') {
 					if(indxM>0) {
 
-						roomW[i][j]=pManagers.get(indxM);
-						pManagers.get(indxM).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+						roomW[i][j]=pManagers1.get(indxM);
+						pManagers1.get(indxM).setPosition(Integer.toString(j)+" "+Integer.toString(i));
 
 						indxM--;
 					}
@@ -119,7 +128,7 @@ public class InputParser
 		}
 
 		FileWrite fw=FileWrite.getInstance();
-		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\f_output.txt");
+		fw.createFile("C:\\Users\\semmo\\Desktop\\f_output.txt");
 		for(int i=0;i<developers.size();i++) {
 			fw.append(developers.get(i).getPosition()+"\n");
 		}
