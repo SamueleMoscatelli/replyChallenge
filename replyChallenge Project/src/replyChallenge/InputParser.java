@@ -1,13 +1,14 @@
 package replyChallenge;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class InputParser 
 {
 
 
-	public static void main(String[] args) throws FileNotFoundException
+	public static void main(String[] args) throws IOException
 	{
 		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\a_solar.txt");
 		String row_col=file.getLine();
