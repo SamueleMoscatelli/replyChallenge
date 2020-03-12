@@ -59,6 +59,40 @@ public class InputParser
 					continue;
 				if (room[i][j]=='_') {
 					roomW[i][j]=developers.get(indxD);
+					developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+					indxD++;
+				}
+				else if (room[i][j]=='M') {
+					roomW[i][j]=pManagers.get(indxD);
+					pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+
+					indxM++;
+				}
+			}
+		}
+		ArrayList<Worker> disponibili;
+		for(int i=0;i<colSize;i++) {
+			for(int j=0;j<rowSize;j++) {
+				if((i+j)%2!=0)
+					continue;
+				disponibili=new ArrayList<Worker>();
+				if (room[i][j]=='_') {
+					if(i>0 && roomW[i-1][j]!=null) {
+						disponibili.add(roomW[i-1][j]);
+					}
+					if(j>0 && roomW[i][j-1]!=null) {
+						disponibili.add(roomW[i][j-1]);
+					}
+					
+					roomW[i][j]=developers.get(indxD);
+					developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+					indxD++;
+				}
+				else if (room[i][j]=='M') {
+					roomW[i][j]=pManagers.get(indxD);
+					pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+
+					indxM++;
 				}
 			}
 		}
