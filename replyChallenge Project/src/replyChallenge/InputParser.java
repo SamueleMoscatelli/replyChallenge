@@ -52,26 +52,26 @@ public class InputParser
 			pManagers.add(pm);
 		}
 		System.out.println("end");
-		int indxD=0;
-		int indxM=0;
+		int indxD=developers.size()-1;
+		int indxM=pManagers.size()-1;
 		for(int i=0;i<colSize;i++) {
 			for(int j=0;j<rowSize;j++) {
 				if((i+j)%2!=0)
 					continue;
 				if (room[i][j]=='_') {
-					if(indxD<developers.size()) {
+					if(indxD>0) {
 						roomW[i][j]=developers.get(indxD);
 						developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
-						indxD++;
+						indxD--;
 					}
 				}
 				else if (room[i][j]=='M') {
-					if(indxM<pManagers.size()) {
+					if(indxM>0) {
 
 						roomW[i][j]=pManagers.get(indxM);
 						pManagers.get(indxM).setPosition(Integer.toString(j)+" "+Integer.toString(i));
 
-						indxM++;
+						indxM--;
 					}
 				}
 			}
