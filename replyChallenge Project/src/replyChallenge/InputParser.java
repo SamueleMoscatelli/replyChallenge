@@ -10,7 +10,7 @@ public class InputParser
 
 	public static void main(String[] args) throws IOException
 	{
-		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\b_dream.txt");
+		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\f_glitch.txt");
 		String row_col=file.getLine();
 		int rowSize = Integer.parseInt(row_col.split(" ")[0]);
 		int colSize = Integer.parseInt(row_col.split(" ")[1]);
@@ -68,8 +68,8 @@ public class InputParser
 				else if (room[i][j]=='M') {
 					if(indxM<pManagers.size()) {
 
-						roomW[i][j]=pManagers.get(indxD);
-						pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+						roomW[i][j]=pManagers.get(indxM);
+						pManagers.get(indxM).setPosition(Integer.toString(j)+" "+Integer.toString(i));
 
 						indxM++;
 					}
@@ -97,7 +97,7 @@ public class InputParser
 						disponibili.add(roomW[i][j+1]);
 					}
 					ideale=HandleWorkers.maxDeveloper(disponibili, developers);
-					ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
+					if(ideale!=null)ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
 				}
 				else if (room[i][j]=='M') {
 					if(i>0 && roomW[i-1][j]!=null) {
@@ -113,13 +113,13 @@ public class InputParser
 						disponibili.add(roomW[i][j+1]);
 					}
 					ideale=HandleWorkers.maxManager(disponibili, pManagers);
-					ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
+					if(ideale!=null)ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
 				}
 			}
 		}
 
 		FileWrite fw=FileWrite.getInstance();
-		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\b_output.txt");
+		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\f_output.txt");
 		for(int i=0;i<developers.size();i++) {
 			fw.append(developers.get(i).getPosition()+"\n");
 		}
