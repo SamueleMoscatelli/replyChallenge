@@ -59,15 +59,20 @@ public class InputParser
 				if((i+j)%2==0)
 					continue;
 				if (room[i][j]=='_') {
-					roomW[i][j]=developers.get(indxD);
-					developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
-					indxD++;
+					if(indxD<developers.size()) {
+						roomW[i][j]=developers.get(indxD);
+						developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+						indxD++;
+					}
 				}
 				else if (room[i][j]=='M') {
-					roomW[i][j]=pManagers.get(indxD);
-					pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+					if(indxM<pManagers.size()) {
 
-					indxM++;
+						roomW[i][j]=pManagers.get(indxD);
+						pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
+
+						indxM++;
+					}
 				}
 			}
 		}
@@ -112,7 +117,7 @@ public class InputParser
 				}
 			}
 		}
-		
+
 		FileWrite fw=FileWrite.getInstance();
 		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\b_output.txt");
 		for(int i=0;i<developers.size();i++) {
