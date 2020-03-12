@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class HandleWorkers {
 	
-	public static int pickDeveloper(ArrayList<Worker> workers, Worker w){
+	public static int pickDeveloper(ArrayList<Worker> workers, Developer w){
 		int tp=0;
 		int wp=0;
 		int bp=0;
@@ -13,7 +13,7 @@ public class HandleWorkers {
 			wp=0;
 			bp=0;
 			if (workers.get(i) instanceof Developer) {
-				wp=calculateWp((Developer)workers.get(i),(Developer)w);
+				wp=calculateWp((Developer)workers.get(i),w);
 			}
 			bp=calculateBp(workers.get(i),w);
 			tp=tp+wp+bp;
@@ -21,16 +21,13 @@ public class HandleWorkers {
 		return tp;
 	}
 	
-	public static int pickManager(ArrayList<Worker> workers, Worker w){
+	public static int pickManager(ArrayList<Worker> workers, ProjectManager w){
 		int tp=0;
 		int wp=0;
 		int bp=0;
 		for(int i=0;i<workers.size();i++) {
 			wp=0;
 			bp=0;
-			if (workers.get(i) instanceof Developer) {
-				wp=calculateWp((Developer)workers.get(i),(Developer)w);	
-			}
 			bp=calculateBp(workers.get(i),w);
 			tp=tp+wp+bp;
 		}
