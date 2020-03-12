@@ -2,37 +2,32 @@ package replyChallenge;
 
 import java.util.ArrayList;
 
-public class Developer {
-	private String company;
-	private int bonusp;
+public class Developer extends Worker{
+	
+	
+	
+
 	private int nskills;
 	private ArrayList<String> skills=new ArrayList<String>();
 	private String position;
 	
 	Developer(String co, int bo, int nsk,ArrayList<String> sk,String pos){
-		this.setCompany(co);
-		this.setBonusp(bo);
+		super(co,bo);
 		this.setNskills(nsk);
 		this.setNskills(nsk);
 		this.setSkills(sk);
 		this.position=pos;
 	}
 
-	public String getCompany() {
-		return company;
+	public String getPosition() {
+		return position;
 	}
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
 
-	public int getBonusp() {
-		return bonusp;
-	}
 
-	public void setBonusp(int bonusp) {
-		this.bonusp = bonusp;
-	}
+	public void setPosition(String position) {
+		this.position = position;
+	}	
 
 	public int getNskills() {
 		return nskills;
