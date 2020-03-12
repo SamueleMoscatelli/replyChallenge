@@ -71,6 +71,7 @@ public class InputParser
 			}
 		}
 		ArrayList<Worker> disponibili;
+		Worker ideale;
 		for(int i=0;i<colSize;i++) {
 			for(int j=0;j<rowSize;j++) {
 				if((i+j)%2!=0)
@@ -83,7 +84,14 @@ public class InputParser
 					if(j>0 && roomW[i][j-1]!=null) {
 						disponibili.add(roomW[i][j-1]);
 					}
-					
+					if(i<colSize && roomW[i+1][j]!=null) {
+						disponibili.add(roomW[i+1][j]);
+					}
+					if(j<rowSize && roomW[i][j+1]!=null) {
+						disponibili.add(roomW[i][j+1]);
+					}
+					ideale=HandleWorkers.maxDeveloper(disponibili, developers);
+					ideale.setPosizion()
 					roomW[i][j]=developers.get(indxD);
 					developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
 					indxD++;

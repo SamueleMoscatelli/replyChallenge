@@ -2,11 +2,10 @@ package replyChallenge;
 
 import java.util.ArrayList;
 
-import javafx.concurrent.Worker;
 
 public class HandleWorkers {
 	
-	public int pickDeveloper(ArrayList<Worker> workers, Worker w){
+	public static int pickDeveloper(ArrayList<Worker> workers, Worker w){
 		int tp=0;
 		int wp=0;
 		int bp=0;
@@ -22,7 +21,7 @@ public class HandleWorkers {
 		return tp;
 	}
 	
-	public int pickManager(ArrayList<Worker> workers, Worker w){
+	public static int pickManager(ArrayList<Worker> workers, Worker w){
 		int tp=0;
 		int wp=0;
 		int bp=0;
@@ -38,7 +37,7 @@ public class HandleWorkers {
 		return tp;
 	}
 	
-	public int calculateWp(Developer d1, Developer d2) {
+	public static int calculateWp(Developer d1, Developer d2) {
 		int wp=0;
 		ArrayList<String> skills1= d1.getSkills();
 		ArrayList<String> skills2= d2.getSkills();
@@ -64,14 +63,14 @@ public class HandleWorkers {
 		return common.size()*notcommon.size();
 	}
 	
-	public int calculateBp(Worker w1, Worker w2) {
+	public static int calculateBp(Worker w1, Worker w2) {
 		if (w1.getCompany().equals(w2.getCompany())) {
 			return w1.getBonus()*w2.getBonus();
 		}
 		else
 			return 0;
 	}
-	public Worker maxManager(ArrayList<Worker> neighbours,ArrayList<Worker> all)
+	public static Worker maxManager(ArrayList<Worker> neighbours,ArrayList<ProjectManager> all)
 	{
 		int max=0;
 		Worker res=null;
@@ -91,7 +90,7 @@ public class HandleWorkers {
 		return res;
 	}
 
-	public int maxDeveloper(ArrayList<Worker> neighbours,ArrayList<Worker> all)
+	public static Worker maxDeveloper(ArrayList<Worker> neighbours,ArrayList<Developer> all)
 	{
 		int max=0;
 		Worker res=null;
