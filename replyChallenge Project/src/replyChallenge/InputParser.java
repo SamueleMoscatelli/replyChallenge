@@ -36,7 +36,7 @@ public class InputParser
 			{
 				skills.add(values[3+j]);
 			}
-			developers.add(new Developer(company,bonus,nsk,skills));
+			developers.add(new Developer(company,bonus,nsk,skills,""));
 		}
 		int pManagerCount=Integer.parseInt(file.getLine());
 		ArrayList<ProjectManager> pManagers= new ArrayList<ProjectManager>();
@@ -46,7 +46,7 @@ public class InputParser
 			String[] values= temp.split(" ");
 			String company=values[0];
 			int bonus= Integer.parseInt(values[1]);
-			ProjectManager pm=new ProjectManager(company,bonus);
+			ProjectManager pm=new ProjectManager(company,bonus,"");
 			pManagers.add(pm);
 		}
 		System.out.println("end");
