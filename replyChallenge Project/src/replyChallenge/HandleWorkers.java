@@ -77,7 +77,7 @@ public class HandleWorkers {
 			if(work instanceof ProjectManager&&((ProjectManager)work).getPosition().equals("X"))
 			{
 				int temp= pickManager(neighbours, all.get(i));
-				if(temp>max)
+				if(temp>=max)
 				{
 					max=temp;
 					res=all.get(i);
@@ -97,7 +97,7 @@ public class HandleWorkers {
 			if(work instanceof Developer&&((Developer)work).getPosition().equals("X"))
 			{
 				int temp= pickDeveloper(neighbours, all.get(i));
-				if(temp>max)
+				if(temp>=max)
 				{
 					max=temp;
 					res=all.get(i);

@@ -10,7 +10,7 @@ public class InputParser
 
 	public static void main(String[] args) throws IOException
 	{
-		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\a_solar.txt");
+		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\b_dream.txt");
 		String row_col=file.getLine();
 		int rowSize = Integer.parseInt(row_col.split(" ")[0]);
 		int colSize = Integer.parseInt(row_col.split(" ")[1]);
@@ -114,7 +114,7 @@ public class InputParser
 		}
 		
 		FileWrite fw=FileWrite.getInstance();
-		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\a_output.txt");
+		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\b_output.txt");
 		for(int i=0;i<developers.size();i++) {
 			fw.append(developers.get(i).getPosition()+"\n");
 		}
