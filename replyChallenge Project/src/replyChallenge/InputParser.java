@@ -56,7 +56,7 @@ public class InputParser
 		int indxM=0;
 		for(int i=0;i<colSize;i++) {
 			for(int j=0;j<rowSize;j++) {
-				if((i+j)%2==0)
+				if((i+j)%2!=0)
 					continue;
 				if (room[i][j]=='_') {
 					if(indxD<developers.size()) {
@@ -80,7 +80,7 @@ public class InputParser
 		Worker ideale;
 		for(int i=0;i<colSize;i++) {
 			for(int j=0;j<rowSize;j++) {
-				if((i+j)%2!=0)
+				if((i+j)%2==0)
 					continue;
 				disponibili=new ArrayList<Worker>();
 				if (room[i][j]=='_') {
