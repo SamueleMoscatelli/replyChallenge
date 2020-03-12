@@ -1,6 +1,6 @@
 package replyChallenge;
 
-public class ProjectManager {
+public class ProjectManager extends Worker{
 
 	public ProjectManager() {
 		

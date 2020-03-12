@@ -2,7 +2,7 @@ package replyChallenge;
 
 import java.util.ArrayList;
 
-public class Developer {
+public class Developer extends Worker{
 	private String company;
 	private int bonusp;
 	private int nskills;
