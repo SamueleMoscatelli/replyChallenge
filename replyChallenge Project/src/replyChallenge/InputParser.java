@@ -11,7 +11,7 @@ public class InputParser
 
 	public static void main(String[] args) throws IOException
 	{
-		FileHandler file=new FileHandler("C:\\Users\\semmo\\Desktop\\f_glitch.txt");
+		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\f_glitch.txt");
 		String row_col=file.getLine();
 		int rowSize = Integer.parseInt(row_col.split(" ")[0]);
 		int colSize = Integer.parseInt(row_col.split(" ")[1]);
@@ -128,7 +128,7 @@ public class InputParser
 		}
 
 		FileWrite fw=FileWrite.getInstance();
-		fw.createFile("C:\\Users\\semmo\\Desktop\\f_output.txt");
+		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\f_output.txt");
 		for(int i=0;i<developers.size();i++) {
 			fw.append(developers.get(i).getPosition()+"\n");
 		}
