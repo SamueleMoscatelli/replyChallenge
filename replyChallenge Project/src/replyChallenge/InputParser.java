@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class InputParser 
 {
-	
-	
+
+
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		FileHandler file=new FileHandler("C:\\Users\\Maurizio Maldini\\Downloads\\a_solar.txt");
@@ -20,7 +20,7 @@ public class InputParser
 			String temp=file.getLine();
 			int j=0;
 			while(j<temp.length()){
-			room[i][j]=temp.charAt(j++);
+				room[i][j]=temp.charAt(j++);
 			}
 		}
 		int devCount=Integer.parseInt(file.getLine());
@@ -91,19 +91,36 @@ public class InputParser
 						disponibili.add(roomW[i][j+1]);
 					}
 					ideale=HandleWorkers.maxDeveloper(disponibili, developers);
-					ideale.setPosizion()
-					roomW[i][j]=developers.get(indxD);
-					developers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
-					indxD++;
+					ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
 				}
 				else if (room[i][j]=='M') {
-					roomW[i][j]=pManagers.get(indxD);
-					pManagers.get(indxD).setPosition(Integer.toString(j)+" "+Integer.toString(i));
-
-					indxM++;
+					if(i>0 && roomW[i-1][j]!=null) {
+						disponibili.add(roomW[i-1][j]);
+					}
+					if(j>0 && roomW[i][j-1]!=null) {
+						disponibili.add(roomW[i][j-1]);
+					}
+					if(i<colSize && roomW[i+1][j]!=null) {
+						disponibili.add(roomW[i+1][j]);
+					}
+					if(j<rowSize && roomW[i][j+1]!=null) {
+						disponibili.add(roomW[i][j+1]);
+					}
+					ideale=HandleWorkers.maxManager(disponibili, pManagers);
+					ideale.setPosition(Integer.toString(j)+" "+Integer.toString(i));
 				}
 			}
 		}
+		
+		FileWrite fw=FileWrite.getInstance();
+		fw.createFile("C:\\Users\\Maurizio Maldini\\Downloads\\a_output.txt");
+		for(int i=0;i<developers.size();i++) {
+			fw.append(developers.get(i).getPosition()+"\n");
+		}
+		for(int i=0;i<pManagers.size();i++) {
+			fw.append(pManagers.get(i).getPosition()+"\n");
+		}
+		fw.close();
 	}
-	
+
 }
