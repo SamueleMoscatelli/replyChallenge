@@ -85,10 +85,10 @@ public class InputParser
 					if(j>0 && roomW[i][j-1]!=null) {
 						disponibili.add(roomW[i][j-1]);
 					}
-					if(i<colSize && roomW[i+1][j]!=null) {
+					if(i<colSize-1 && roomW[i+1][j]!=null) {
 						disponibili.add(roomW[i+1][j]);
 					}
-					if(j<rowSize && roomW[i][j+1]!=null) {
+					if(j<rowSize-1 && roomW[i][j+1]!=null) {
 						disponibili.add(roomW[i][j+1]);
 					}
 					ideale=HandleWorkers.maxDeveloper(disponibili, developers);
@@ -101,10 +101,10 @@ public class InputParser
 					if(j>0 && roomW[i][j-1]!=null) {
 						disponibili.add(roomW[i][j-1]);
 					}
-					if(i<colSize && roomW[i+1][j]!=null) {
+					if(i<colSize-1 && roomW[i+1][j]!=null) {
 						disponibili.add(roomW[i+1][j]);
 					}
-					if(j<rowSize && roomW[i][j+1]!=null) {
+					if(j<rowSize-1 && roomW[i][j+1]!=null) {
 						disponibili.add(roomW[i][j+1]);
 					}
 					ideale=HandleWorkers.maxManager(disponibili, pManagers);
