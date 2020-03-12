@@ -1,18 +1,20 @@
 package replyChallenge;
 
-public class ProjectManager extends Worker{
+public class ProjectManager {
 
 	public ProjectManager() {
 		
 	}
 	
-	public ProjectManager(String company, int bonus) {
+	public ProjectManager(String company, int bonus, String pos) {
 		this.company=company;
 		this.bonus=bonus;
+		this.position=pos;
 	}
 	
 	private String company;
 	private int bonus;
+	private String position;
 	
 	public String getCompany() {
 		return company;

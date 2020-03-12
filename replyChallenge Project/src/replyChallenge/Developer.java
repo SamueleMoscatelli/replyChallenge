@@ -2,18 +2,20 @@ package replyChallenge;
 
 import java.util.ArrayList;
 
-public class Developer extends Worker{
+public class Developer {
 	private String company;
 	private int bonusp;
 	private int nskills;
 	private ArrayList<String> skills=new ArrayList<String>();
+	private String position;
 	
-	Developer(String co, int bo, int nsk,ArrayList<String> sk){
+	Developer(String co, int bo, int nsk,ArrayList<String> sk,String pos){
 		this.setCompany(co);
 		this.setBonusp(bo);
 		this.setNskills(nsk);
 		this.setNskills(nsk);
 		this.setSkills(sk);
+		this.position=pos;
 	}
 
 	public String getCompany() {
