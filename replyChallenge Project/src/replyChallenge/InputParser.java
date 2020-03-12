@@ -14,6 +14,7 @@ public class InputParser
 		int rowSize = Integer.parseInt(row_col.split(" ")[0]);
 		int colSize = Integer.parseInt(row_col.split(" ")[1]);
 		char[][] room=new char[colSize][rowSize];
+		Worker[][] roomW=new Worker[colSize][rowSize];
 		for(int i=0;i<colSize;++i)
 		{
 			String temp=file.getLine();
@@ -36,7 +37,7 @@ public class InputParser
 			{
 				skills.add(values[3+j]);
 			}
-			developers.add(new Developer(company,bonus,nsk,skills,""));
+			developers.add(new Developer(company,bonus,nsk,skills,"X"));
 		}
 		int pManagerCount=Integer.parseInt(file.getLine());
 		ArrayList<ProjectManager> pManagers= new ArrayList<ProjectManager>();
@@ -46,10 +47,21 @@ public class InputParser
 			String[] values= temp.split(" ");
 			String company=values[0];
 			int bonus= Integer.parseInt(values[1]);
-			ProjectManager pm=new ProjectManager(company,bonus,"");
+			ProjectManager pm=new ProjectManager(company,bonus,"X");
 			pManagers.add(pm);
 		}
 		System.out.println("end");
+		int indxD=0;
+		int indxM=0;
+		for(int i=0;i<colSize;i++) {
+			for(int j=0;j<rowSize;j++) {
+				if((i+j)%2==0)
+					continue;
+				if (room[i][j]=='_') {
+					roomW[i][j]=developers.get(indxD);
+				}
+			}
+		}
 	}
 	
 }
